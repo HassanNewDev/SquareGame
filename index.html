@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Click Game</title>
+<style>
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+#game-area {
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+  margin: 20px auto;
+  cursor: pointer;
+  border-radius: 10px;
+}
+#game-area.active {
+  background-color: yellow;
+}
+#score {
+  font-size: 20px;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>Click the Square!</h1>
+
+<div id="game-area"></div>
+<div id="score">Score: 0</div>
+
+<script>
+const gameArea = document.getElementById('game-area');
+const scoreDisplay = document.getElementById('score');
+let score = 0;
+let isActive = false;
+
+gameArea.addEventListener('click', () => {
+  if (!isActive) {
+    gameArea.classList.add('active');
+    isActive = true;
+
+    score++;
+    scoreDisplay.textContent = `Score: ${score}`;
+
+    setTimeout(() => {
+      gameArea.classList.remove('active');
+      isActive = false;
+    }, 500);
+  }
+});
+</script>
+
+</body>
+</html>
